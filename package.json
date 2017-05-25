@@ -45,7 +45,9 @@
     "npm": ">=4.0.0",
     "node": ">=7.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "reify": "^0.11.0"
+  },
   "devDependencies": {
     "antlr4": "^4.7.0",
     "babel-eslint": "^7.2.3",
@@ -76,7 +78,7 @@
   "scripts": {
     "start": "NODE_ENV=production rollup -c",
     "dev": "rollup -c",
-    "test": "mocha --compilers js:babel-register --require babel-polyfill",
+    "test": "mocha --compilers js:babel-register --require babel-polyfill --require ./test/setup.js",
     "cover": "babel-node ./node_modules/.bin/isparta cover _mocha",
     "precoveralls": "npm run cover",
     "coveralls": "coveralls < coverage/lcov.info",
