@@ -42,8 +42,8 @@
   },
   "homepage": "https://exemplator.xyz",
   "engines": {
-    "npm": ">=3.0.0",
-    "node": ">=5.0.0"
+    "npm": ">=4.0.0",
+    "node": ">=7.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
