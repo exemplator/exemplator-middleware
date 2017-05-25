@@ -1,4 +1,4 @@
-// Generated from src/Java8.g4 by ANTLR 4.7
+// Generated from src/antlr/java8/Java8.g4 by ANTLR 4.7
 // jshint ignore: start
 var antlr4 = require('antlr4/index');
 
@@ -938,7 +938,7 @@ Java8Lexer.prototype.sempred = function(localctx, ruleIndex, predIndex) {
 };
 
 Java8Lexer.prototype.JavaLetter_sempred = function(localctx, predIndex) {
-  switch(predIndex) {
+	switch(predIndex) {
 		case 0:
 			return Character.isJavaIdentifierStart(_input.LA(-1));
 		case 1:
@@ -949,7 +949,7 @@ Java8Lexer.prototype.JavaLetter_sempred = function(localctx, predIndex) {
 };
 
 Java8Lexer.prototype.JavaLetterOrDigit_sempred = function(localctx, predIndex) {
-  switch(predIndex) {
+	switch(predIndex) {
 		case 2:
 			return Character.isJavaIdentifierPart(_input.LA(-1));
 		case 3:

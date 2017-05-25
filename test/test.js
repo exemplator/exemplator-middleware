@@ -22,9 +22,6 @@ function antlrDebuging() {
     }
     J8Parser.prototype = Object.create(Java8Listener.Java8Listener.prototype)
     J8Parser.prototype.constructor = J8Parser
-    J8Parser.prototype.exitYear = function(ctx) {
-      console.log(ctx)
-    }
 
     const input = JExamples.code
     const chars = new antlr4.InputStream(input)
@@ -32,12 +29,13 @@ function antlrDebuging() {
     const tokens = new antlr4.CommonTokenStream(lexer)
     const parser = new Java8Parser.Java8Parser(tokens)
     parser.buildParseTrees = true
+    const tree = parser.compilationUnit()
 
     // works up until here
 
-    //const tree = parser.date();
-    //const printer = new YearPrinter();
-    //antlr4.tree.ParseTreeWalker.DEFAULT.walk(printer, tree)
+    // const tree = parser.date();
+    // const printer = new YearPrinter();
+    // antlr4.tree.ParseTreeWalker.DEFAULT.walk(printer, tree)
 
     expect(1).to.equal(1)
   })

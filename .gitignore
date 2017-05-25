@@ -46,6 +46,9 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 
+# Other
+.reify-cache
+
 # Output of 'npm pack'
 *.tgz
 

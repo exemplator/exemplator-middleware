@@ -1,4 +1,4 @@
-// Generated from src/Java8.g4 by ANTLR 4.7
+// Generated from src/antlr/java8/Java8.g4 by ANTLR 4.7
 // jshint ignore: start
 var antlr4 = require('antlr4/index');
 
