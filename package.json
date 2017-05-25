@@ -45,6 +45,9 @@
     "npm": ">=4.0.0",
     "node": ">=7.0.0"
   },
+  "dependencies": {
+    "antlr4": "^4.7.0"
+  },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
     "babel-plugin-add-module-exports": "^0.2.1",
