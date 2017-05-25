@@ -938,7 +938,8 @@ Java8Lexer.prototype.sempred = function(localctx, ruleIndex, predIndex) {
 };
 
 Java8Lexer.prototype.JavaLetter_sempred = function(localctx, predIndex) {
-	switch(predIndex) {
+	//noinspection FallThroughInSwitchStatementJS
+  switch(predIndex) {
 		case 0:
 			return Character.isJavaIdentifierStart(_input.LA(-1));
 		case 1:
@@ -949,7 +950,8 @@ Java8Lexer.prototype.JavaLetter_sempred = function(localctx, predIndex) {
 };
 
 Java8Lexer.prototype.JavaLetterOrDigit_sempred = function(localctx, predIndex) {
-	switch(predIndex) {
+  //noinspection FallThroughInSwitchStatementJS
+  switch(predIndex) {
 		case 2:
 			return Character.isJavaIdentifierPart(_input.LA(-1));
 		case 3:
