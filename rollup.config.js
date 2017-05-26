@@ -1,8 +1,10 @@
 import babel from 'rollup-plugin-babel'
-import eslint from 'rollup-plugin-eslint';
+import eslint from 'rollup-plugin-eslint'
 import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
 import replace from 'rollup-plugin-replace'
+import globals from 'rollup-plugin-node-globals'
+import builtins from 'rollup-plugin-node-builtins'
 
 export default {
   entry: 'src/main.js',
@@ -11,8 +13,15 @@ export default {
   sourceMap: 'inline',
   moduleName: 'exemplator-middleware',
   plugins: [
-    resolve({jsnext: true, main: true}),
+    resolve({
+      jsnext: true,
+      main: true,
+      module: true,
+      preferBuiltins: false
+    }),
     commonjs(),
+    globals(),
+    builtins(),
     eslint({
       exclude: [
         'src/antlr/**'
