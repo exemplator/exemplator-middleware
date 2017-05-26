@@ -1,3 +1,3 @@
-const Middleware = require('../lib/lib.min')
+const middleware = require('../lib/lib.min')
 
-Middleware.sendRequest(null, null, null, null)
+middleware.sendRequest(null, null, null, null)

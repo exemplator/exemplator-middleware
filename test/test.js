@@ -12,9 +12,9 @@ describe('Perform sample test\n', () => {
 function antlrDebuging() {
   it('Debugging antlr: ', () => {
     const antlr4 = require('antlr4/index')
-    const Java8Lexer = require('./java8/Java8Lexer')
-    const Java8Parser = require('./java8/Java8Parser')
-    const Java8Visitor = require('./java8/Java8Visitor')
+    const Java8Lexer = require('../src/java8/antlr/Java8Lexer')
+    const Java8Parser = require('../src/java8/antlr/Java8Parser')
+    const Java8Visitor = require('../src/java8/antlr/Java8Visitor')
 
     /**
      * Sample Visitor that doesn't work
