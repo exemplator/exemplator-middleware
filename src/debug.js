@@ -3,9 +3,9 @@
 // middleware.sendRequest(null, null, null, null)
 
 const antlr4 = require('antlr4/index')
-const Java8Lexer = require('./java8/antlr/Java8Lexer')
-const Java8Parser = require('./java8/antlr/Java8Parser')
-const Java8Visitor = require('./java8/antlr/Java8Visitor')
+const Java8Lexer = require('./parser/java8/Java8Lexer')
+const Java8Parser = require('./parser/java8/Java8Parser')
+const Java8Visitor = require('./parser/java8/Java8Visitor')
 const JExamples = require('../test/resources/java/example1')
 
 

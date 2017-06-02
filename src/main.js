@@ -1,7 +1,7 @@
 import antlr4 from 'antlr4/index'
-import Java8Lexer from './java8/antlr/Java8Lexer'
-import Java8Parser from './java8/antlr/Java8Parser'
-import Visitor from './java8/visitor'
+import Java8Lexer from './parser/java8/Java8Lexer'
+import Java8Parser from './parser/java8/Java8Parser'
+import Visitor from './search/java8/visitor'
 import JExamples from '../test/resources/java/example1'
 
 const Middleware = {
