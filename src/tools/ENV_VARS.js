@@ -1,4 +1,4 @@
-let VARS
+let ENV_VARS
 
 const CONSTANTS = {
   SEARCHCODE_API_URL: 'https://searchcode.com/api/codesearch_I/?q=',
@@ -8,15 +8,15 @@ const CONSTANTS = {
   GITHUB_URL: 'https://github.com/'
 }
 
-if (ENV !== 'production') {
+if (NODE_ENV !== 'production') {
   console.log('Dev variables chosen')
-  VARS = {
+  ENV_VARS = {
     CONSTANTS: CONSTANTS
   }
 } else {
-  VARS = {
+  ENV_VARS = {
     CONSTANTS: CONSTANTS
   }
 }
 
-export default VARS
+export default ENV_VARS

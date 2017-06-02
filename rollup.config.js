@@ -38,7 +38,7 @@ export default {
     babel({exclude: 'node_modules/**'}),
     replace({
       exclude: 'node_modules/**',
-      ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
     })
   ]
 }

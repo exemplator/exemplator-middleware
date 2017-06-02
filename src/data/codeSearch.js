@@ -1,6 +1,6 @@
 const fetch = require('isomorphic-fetch')
 import Immutable from 'immutable'
-import VARS from '../tools/VARS'
+import ENV_VARS from '../tools/ENV_VARS'
 
 export default class CodeSearch {
 
@@ -44,7 +44,7 @@ export default class CodeSearch {
         .map(term => term.trim())
         .join('+')
 
-      return VARS.CONSTANTS.SEARCHCODE_API_URL + searchString + '&p=' + page + '&src=' + vcs + '&lan=' + language
+      return ENV_VARS.CONSTANTS.SEARCHCODE_API_URL + searchString + '&p=' + page + '&src=' + vcs + '&lan=' + language
     }
 
     return null
