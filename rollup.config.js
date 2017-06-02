@@ -1,25 +1,33 @@
+import json from 'rollup-plugin-json'
 import babel from 'rollup-plugin-babel'
 import eslint from 'rollup-plugin-eslint'
-import resolve from 'rollup-plugin-node-resolve'
+import nodeResolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
 import replace from 'rollup-plugin-replace'
 import globals from 'rollup-plugin-node-globals'
 import builtins from 'rollup-plugin-node-builtins'
+// import uglify from 'rollup-plugin-uglify'
+
 
 export default {
   entry: 'src/main.js',
   dest: 'lib/lib.min.js',
-  format: 'umd',
-  sourceMap: 'inline',
+  format: 'cjs',
+  sourceMap: 'true',
   moduleName: 'exemplator-middleware',
   plugins: [
-    resolve({
+    json(),
+    nodeResolve({
       jsnext: true,
       main: true,
       module: true,
       preferBuiltins: false
     }),
-    commonjs(),
+    commonjs({
+      namedExports: {
+        'node_modules/punycode/punycode.js': ['toASCII']
+      }
+    }),
     globals(),
     builtins(),
     eslint({
@@ -31,7 +39,6 @@ export default {
     replace({
       exclude: 'node_modules/**',
       ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
-    }),
-    uglify()
+    })
   ]
 }

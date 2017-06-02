@@ -4,15 +4,10 @@ module.exports = {
   rules: {
     "max-len": [2, 125, 4, {ignoreComments: true, ignoreUrls: true}],
     "new-cap": ["error", { "capIsNew": false }],
-    "semi": ["error", "never"],
-    "comma-dangle": ["error", "never"],
-    "require-jsdoc": ["error", {
-      "require": {
-        "FunctionDeclaration": false,
-        "MethodDefinition": false,
-        "ClassDeclaration": false,
-        "ArrowFunctionExpression": false
-      }
-    }]
+    "semi": "off",
+    "comma-dangle":"off",
+    "arrow-parens": ["error", "as-needed"],
+    "valid-jsdoc": "off",
+    "require-jsdoc": "off"
   }
 };

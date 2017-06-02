@@ -3,7 +3,8 @@ import {it, describe} from 'mocha'
 import JExamples from './resources/java/example1'
 
 describe('Perform sample test\n', () => {
-  antlrDebuging()
+  // antlrDebuging()
+  fetchDebug()
 })
 
 /**
@@ -12,9 +13,9 @@ describe('Perform sample test\n', () => {
 function antlrDebuging() {
   it('Debugging antlr: ', () => {
     const antlr4 = require('antlr4/index')
-    const Java8Lexer = require('../src/java8/antlr/JavaLexer')
-    const Java8Parser = require('../src/java8/antlr/JavaParser')
-    const Java8Visitor = require('../src/java8/antlr/JavaVisitor')
+    const Java8Lexer = require('../src/parser/java8/Java8Lexer')
+    const Java8Parser = require('../src/parser/java8/Java8Parser')
+    const Java8Visitor = require('../src/parser/java8/Java8Visitor')
 
     /**
      * Sample Visitor that doesn't work
@@ -22,11 +23,11 @@ function antlrDebuging() {
      * @constructor
      */
     function Visitor() {
-      Java8Visitor.JavaVisitor.call(this)
+      Java8Visitor.Java8Visitor.call(this)
       return this
     }
 
-    Visitor.prototype = Object.create(Java8Visitor.JavaVisitor.prototype)
+    Visitor.prototype = Object.create(Java8Visitor.Java8Visitor.prototype)
     Visitor.prototype.constructor = Visitor
     Visitor.prototype.visitTree = function(ctx) {
       // implement logic to determine which function to visit
@@ -36,9 +37,9 @@ function antlrDebuging() {
 
     const input = JExamples.code
     const chars = new antlr4.InputStream(input)
-    const lexer = new Java8Lexer.JavaLexer(chars)
+    const lexer = new Java8Lexer.Java8Lexer(chars)
     const tokens = new antlr4.CommonTokenStream(lexer)
-    const parser = new Java8Parser.JavaParser(tokens)
+    const parser = new Java8Parser.Java8Parser(tokens)
     parser.buildParseTrees = true
 
     let tree
@@ -64,6 +65,18 @@ function antlrDebuging() {
 
      visitor.visitTree(tree)
 
+    expect(1).to.equal(1)
+  })
+}
+
+function fetchDebug() {
+  it('Debugging antlr: ', () => {
+    const CodeSearch = require('../src/data/codeSearch')
+    const codeSearch = new CodeSearch()
+
+    const searchTerms = Immutable.List(['hello', 'world'])
+
+    codeSearch.fetch(searchTerms, 0)
     expect(1).to.equal(1)
   })
 }

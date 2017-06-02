@@ -1,4 +1,4 @@
-import ANTLRVisitor from './parser/java8/Java8Visitor'
+import ANTLRVisitor from '../../parser/java8/Java8Visitor'
 
 /**
  * ANTLR 4 visitor for Java 8.
