@@ -1,6 +1,6 @@
 const fetch = require('isomorphic-fetch')
 import Immutable from 'immutable'
-import CodeSample from 'codeSample'
+import CodeSample from './codeSample'
 import ENV_VARS from '../tools/ENV_VARS'
 
 export default class CodeSearch {
@@ -29,7 +29,7 @@ export default class CodeSearch {
       }
     }).then(json => {
       const results = new Immutable.List(json.results)
-      return results.map(result => CodeSample.init(result))
+      return results.map(result => CodeSample.init(result, vcs))
     }).then(codeSamples => {
       return codeSamples.map(codeSample => this._fetchRawCode(codeSample))
     })

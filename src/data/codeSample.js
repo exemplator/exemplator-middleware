@@ -1,6 +1,6 @@
 import Immutable from 'immutable'
 import ENV_VARS from '../tools/ENV_VARS'
-import VCS from 'vcs'
+import VCS from './vcs'
 
 export default class CodeSample extends Immutable.Record({
   rawUrl: '',
@@ -20,7 +20,7 @@ export default class CodeSample extends Immutable.Record({
 
     let record = new CodeSample()
     record = record.set('rawUrl', vcsURLs.rawURL)
-    record = record.set('fileURL', vcsURLs.fileURL)
+    record = record.set('fileUrl', vcsURLs.fileURL)
     record = record.set('repoUrl', jsonResult.repo)
     record = record.set('vcs', vcs)
     record = record.set('language', jsonResult.language)
@@ -33,7 +33,7 @@ export default class CodeSample extends Immutable.Record({
 
     const gitRepo = jsonResult.repo
     const location = jsonResult.location
-    const gitData = gitRepo.substring(0, gitRepo.length() - 4).split('/')
+    const gitData = gitRepo.substring(0, gitRepo.length - 4).split('/')
 
     const user = gitData[3]
     const repo = gitData[4]

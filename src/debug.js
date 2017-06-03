@@ -1,7 +1,7 @@
 const middleware = require('../lib/lib.min')
 //
 // middleware.sendRequest(null, null, null, null)
-middleware.fetchTest(['hello', 'world'], 0)
+middleware.fetchTest(['hello', 'world'], 0, middleware.LANGUAGE.JAVA, middleware.VCS.GITHUB)
 
 // const antlr4 = require('antlr4/index')
 // const Java8Lexer = require('./parser/java8/Java8Lexer')

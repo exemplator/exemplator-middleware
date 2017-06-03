@@ -5,6 +5,8 @@ require('es6-promise').polyfill()
 // import Visitor from './search/java8/visitor'
 // import JExamples from '../test/resources/java/example1'
 import CodeSearch from './data/codeSearch'
+import LANGUAGES from './data/languages'
+import VCS from './data/vcs'
 
 const Middleware = {
   sendRequest(code, type, page, counter) {
@@ -24,7 +26,10 @@ const Middleware = {
     const codeSearch = new CodeSearch()
 
     codeSearch.fetch(list, page)
-  }
+  },
+
+  VCS: VCS,
+  LANGUAGE: LANGUAGES
 }
 
 export default Middleware
