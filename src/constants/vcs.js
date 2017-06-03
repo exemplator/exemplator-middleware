@@ -1,3 +1,3 @@
 export default {
-  'GITHUB': 23
+  'GITHUB': 2
 }

@@ -1,6 +1,6 @@
 import Immutable from 'immutable'
-import ENV_VARS from '../tools/ENV_VARS'
-import VCS from './vcs'
+import ENV_VARS from '../constants/ENV_VARS'
+import VCS from '../constants/vcs'
 
 export default class CodeSample extends Immutable.Record({
   rawUrl: '',
@@ -46,8 +46,8 @@ export default class CodeSample extends Immutable.Record({
         }
       default:
         return {
-          rawURL: jsonResult.repo,
-          fileURL: jsonResult.repo.replace('view', 'raw')
+          rawURL: jsonResult.url,
+          fileURL: jsonResult.url.replace('view', 'raw')
         }
     }
   }

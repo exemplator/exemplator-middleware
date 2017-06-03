@@ -4,9 +4,13 @@ require('es6-promise').polyfill()
 // import Java8Parser from './parser/java8/Java8Parser'
 // import Visitor from './search/java8/visitor'
 // import JExamples from '../test/resources/java/example1'
+import Promise from 'bluebird'
 import CodeSearch from './data/codeSearch'
-import LANGUAGES from './data/languages'
-import VCS from './data/vcs'
+import LANGUAGES from './constants/languages'
+import VCS from './constants/vcs'
+
+// Catching promises
+Promise.onPossiblyUnhandledRejection(error => console.log('Uncaught promise: ' + error.message))
 
 const Middleware = {
   sendRequest(code, type, page, counter) {
@@ -22,10 +26,10 @@ const Middleware = {
     // visitor.visitTree(tree)
   },
 
-  fetchTest(list, page) {
+  fetchTest(list, page, language, vcs) {
     const codeSearch = new CodeSearch()
 
-    codeSearch.fetch(list, page)
+    return codeSearch.fetch(list, page, language, vcs)
   },
 
   VCS: VCS,

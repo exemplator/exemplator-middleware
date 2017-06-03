@@ -1,3 +1,3 @@
 export default {
-  'JAVA': 2
+  'JAVA': 23
 }

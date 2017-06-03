@@ -13,7 +13,7 @@ export default {
   entry: 'src/main.js',
   dest: 'lib/lib.min.js',
   format: 'cjs',
-  sourceMap: 'inline',
+  sourceMap: 'true',
   moduleName: 'exemplator-middleware',
   plugins: [
     json(),
