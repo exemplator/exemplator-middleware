@@ -1,3 +1,3 @@
 module.exports = {
-  'java': 2
+  'JAVA': 2
 }

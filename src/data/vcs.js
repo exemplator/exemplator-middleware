@@ -1,3 +1,3 @@
 module.exports = {
-  'github': 23
+  'GITHUB': 23
 }

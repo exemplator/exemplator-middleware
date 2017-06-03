@@ -35,7 +35,7 @@ export default class CodeSearch {
     })
   }
 
-  fetchRawCode(codeSample) {
+  _fetchRawCode(codeSample) {
     const url = codeSample.get('rawUrl')
 
     if (!url) {

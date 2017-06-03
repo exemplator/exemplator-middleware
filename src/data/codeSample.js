@@ -1,18 +1,34 @@
 import Immutable from 'immutable'
 import ENV_VARS from '../tools/ENV_VARS'
+import VCS from 'vcs'
 
 export default class CodeSample extends Immutable.Record({
   rawUrl: '',
   repoUrl: '',
   fileUrl: '',
   code: '',
+  vcs: '',
+  language: '',
   selections: new Immutable.List()
 }) {
   constructor() {
     super()
   }
 
-  static init(jsonResult) {
+  static init(jsonResult, vcs) {
+    const vcsURLs = CodeSample._getVCSURLs(jsonResult, vcs)
+
+    let record = new CodeSample()
+    record = record.set('rawUrl', vcsURLs.rawURL)
+    record = record.set('fileURL', vcsURLs.fileURL)
+    record = record.set('repoUrl', jsonResult.repo)
+    record = record.set('vcs', vcs)
+    record = record.set('language', jsonResult.language)
+
+    return record
+  }
+
+  static _getVCSURLs(jsonResult, vcs) {
     const filename = jsonResult.filename
 
     const gitRepo = jsonResult.repo
@@ -22,15 +38,18 @@ export default class CodeSample extends Immutable.Record({
     const user = gitData[3]
     const repo = gitData[4]
 
-    const rawURL = ENV_VARS.CONSTANTS.GITHUB_RAW_URL + user + '/' + repo + '/master' + location + '/' + filename
-    const fileURL = ENV_VARS.CONSTANTS.GITHUB_URL + user + '/' + repo + '/blob/master' + location + '/' + filename
-
-    let record = new CodeSample()
-    record = record.set('rawUrl', rawURL)
-    record = record.set('fileURL', fileURL)
-    record = record.set('repoUrl', gitRepo)
-
-    return record
+    switch (vcs) {
+      case VCS.GITHUB:
+        return {
+          rawURL: ENV_VARS.CONSTANTS.GITHUB_RAW_URL + user + '/' + repo + '/master' + location + '/' + filename,
+          fileURL: ENV_VARS.CONSTANTS.GITHUB_URL + user + '/' + repo + '/blob/master' + location + '/' + filename
+        }
+      default:
+        return {
+          rawURL: jsonResult.repo,
+          fileURL: jsonResult.repo.replace('view', 'raw')
+        }
+    }
   }
 
   getSurroundings() {
