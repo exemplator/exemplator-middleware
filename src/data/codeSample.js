@@ -2,14 +2,35 @@ import Immutable from 'immutable'
 import ENV_VARS from '../tools/ENV_VARS'
 
 export default class CodeSample extends Immutable.Record({
-  rawUrl: 1,
-  userUrl: 2,
-  fileUrl: 3,
-  code: 4,
+  rawUrl: '',
+  repoUrl: '',
+  fileUrl: '',
+  code: '',
   selections: new Immutable.List()
 }) {
   constructor() {
     super()
+  }
+
+  static init(jsonResult) {
+    const filename = jsonResult.filename
+
+    const gitRepo = jsonResult.repo
+    const location = jsonResult.location
+    const gitData = gitRepo.substring(0, gitRepo.length() - 4).split('/')
+
+    const user = gitData[3]
+    const repo = gitData[4]
+
+    const rawURL = ENV_VARS.CONSTANTS.GITHUB_RAW_URL + user + '/' + repo + '/master' + location + '/' + filename
+    const fileURL = ENV_VARS.CONSTANTS.GITHUB_URL + user + '/' + repo + '/blob/master' + location + '/' + filename
+
+    let record = new CodeSample()
+    record = record.set('rawUrl', rawURL)
+    record = record.set('fileURL', fileURL)
+    record = record.set('repoUrl', gitRepo)
+
+    return record
   }
 
   getSurroundings() {

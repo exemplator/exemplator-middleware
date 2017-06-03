@@ -1,5 +1,6 @@
 const fetch = require('isomorphic-fetch')
 import Immutable from 'immutable'
+import CodeSample from 'codeSample'
 import ENV_VARS from '../tools/ENV_VARS'
 
 export default class CodeSearch {
@@ -7,8 +8,8 @@ export default class CodeSearch {
   constructor() {
   }
 
-  fetch(searchTerms, page) {
-    const url = this._createQuery(Immutable.List(searchTerms), page, 2, 23)
+  fetch(searchTerms, page, language, vcs) {
+    const url = this._createQuery(Immutable.List(searchTerms), page, language, vcs)
 
     return fetch(url, {
       method: 'GET',
@@ -18,14 +19,47 @@ export default class CodeSearch {
       }
     }).then(serverResponse => {
       if (serverResponse.status === 200) {
-        serverResponse.json().then(json => {
-          console.log(json.results)
+        return serverResponse.json().then(json => {
+          return json
         })
       } else {
-        serverResponse.json().then(json => {
-         console.log('error:' + json)
+        return serverResponse.json().then(json => {
+          return Promise.reject('error:' + json)
         })
       }
+    }).then(json => {
+      const results = new Immutable.List(json.results)
+      return results.map(result => CodeSample.init(result))
+    }).then(codeSamples => {
+      return codeSamples.map(codeSample => this.fetchRawCode(codeSample))
+    })
+  }
+
+  fetchRawCode(codeSample) {
+    const url = codeSample.get('rawUrl')
+
+    if (!url) {
+      return null
+    }
+
+    return fetch(url, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    }).then(serverResponse => {
+      if (serverResponse.status === 200) {
+        return serverResponse.json().then(json => {
+          return json
+        })
+      } else {
+        return serverResponse.json().then(json => {
+          return Promise.reject('error:' + json)
+        })
+      }
+    }).then(json => {
+      return codeSample.set('code', json)
     })
   }
 
