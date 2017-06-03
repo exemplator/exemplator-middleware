@@ -5,7 +5,8 @@ const CONSTANTS = {
   LANG_JAVA: 'java',
   GITHUB_REPO_URL: 'https://api.github.com/search/repositories?q=',
   GITHUB_RAW_URL: 'https://raw.githubusercontent.com/',
-  GITHUB_URL: 'https://github.com/'
+  GITHUB_URL: 'https://github.com/',
+  SURROUNDING_RADIUS: 10
 }
 
 if (NODE_ENV !== 'production') {
