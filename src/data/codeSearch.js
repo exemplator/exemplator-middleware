@@ -31,7 +31,7 @@ export default class CodeSearch {
       const results = new Immutable.List(json.results)
       return results.map(result => CodeSample.init(result))
     }).then(codeSamples => {
-      return codeSamples.map(codeSample => this.fetchRawCode(codeSample))
+      return codeSamples.map(codeSample => this._fetchRawCode(codeSample))
     })
   }
 
