@@ -1,10 +1,12 @@
 import {expect} from 'chai'
 import {it, describe} from 'mocha'
 import JExamples from './resources/java/example1'
+import { ANTLRInputStream, CommonTokenStream } from 'antlr4ts';
 
 describe('Perform sample test\n', () => {
   // antlrDebuging()
-  fetchDebug()
+  antlr4tsDebuging()
+  //fetchDebug()
 })
 
 /**
@@ -65,6 +67,27 @@ function antlrDebuging() {
 
      visitor.visitTree(tree)
 
+    expect(1).to.equal(1)
+  })
+}
+
+function antlr4tsDebuging() {
+  it('Debugging antlr: ', () => {
+    const Java8Lexer = require('../src/parser/java8/Java8Lexer')
+    const Java8Parser = require('../src/parser/java8/Java8Parser')
+    // const Java8Visitor = require('../src/parser/java8/Java8Visitor')
+
+    const input = JExamples.code
+
+    // Create the lexer and parser
+    let inputStream = new ANTLRInputStream(input);
+    let lexer = new Java8Lexer(inputStream);
+    let tokenStream = new CommonTokenStream(lexer);
+    let parser = new Java8Parser(tokenStream);
+
+    // Parse the input, where `compilationUnit` is whatever entry point you defined
+    let result = parser.compilationUnit();
+    console.log(result)
     expect(1).to.equal(1)
   })
 }

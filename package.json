@@ -46,7 +46,9 @@
     "node": ">=7.0.0"
   },
   "dependencies": {
+    "@types/node": "^7.0.27",
     "antlr4": "^4.7.0",
+    "antlr4ts": "^0.4.1-alpha.0",
     "bluebird": "^3.5.0",
     "es6-promise": "^4.1.0",
     "immutable": "^3.8.1",
@@ -54,6 +56,9 @@
     "reify": "^0.11.0"
   },
   "devDependencies": {
+    "@types/mocha": "^2.2.41",
+    "@types/node": "^7.0.27",
+    "antlr4ts-cli": "^0.4.0-alpha.4",
     "babel-eslint": "^7.2.3",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-external-helpers": "^6.22.0",
@@ -69,8 +74,9 @@
     "eslint-config-google": "^0.7.1",
     "isparta": "^4.0.0",
     "minami": "^1.1.1",
-    "mocha": "^3.1.2",
+    "mocha": "^3.4.2",
     "mocha-lcov-reporter": "^1.2.0",
+    "mocha-typescript": "^1.1.4",
     "npm-run-all": "^4.0.2",
     "rollup": "^0.41.6",
     "rollup-plugin-babel": "^2.7.1",
@@ -81,12 +87,18 @@
     "rollup-plugin-node-globals": "^1.1.0",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-replace": "^1.1.1",
-    "rollup-plugin-uglify": "^2.0.1"
+    "rollup-plugin-typescript": "^0.8.1",
+    "rollup-plugin-uglify": "^2.0.1",
+    "source-map-support": "^0.4.15",
+    "ts-node": "^3.0.4",
+    "typescript": "^2.3.4"
   },
   "scripts": {
-    "antlr": "antlr4 -Dlanguage=JavaScript src/antlr/java8/Java8.g4 -o src/antlr/java8.g4 -visitor",
+    "antlr4": "antlr4 -Dlanguage=JavaScript src/parser/java8/Java8.g4 -o src -visitor",
+    "antlr4ts": "antlr4ts -Dlanguage=JavaScript src/parser/java8/Java8.g4 -o src -visitor",
     "start": "NODE_ENV=production rollup -c",
     "dev": "rollup -c",
+    "testts": "tsc && mocha --require ./test/setupts.ts",
     "test": "mocha --compilers js:babel-register --require babel-polyfill --require ./test/setup.js",
     "cover": "babel-node ./node_modules/.bin/isparta cover _mocha",
     "precoveralls": "npm run cover",

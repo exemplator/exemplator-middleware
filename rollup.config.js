@@ -17,6 +17,7 @@ export default {
   moduleName: 'exemplator-middleware',
   plugins: [
     json(),
+    typescript(),
     nodeResolve({
       jsnext: true,
       main: true,
