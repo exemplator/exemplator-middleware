@@ -3,8 +3,8 @@ import {it, describe} from 'mocha'
 import JExamples from './resources/java/example1'
 
 describe('Perform sample test\n', () => {
-  // antlrDebuging()
-  fetchDebug()
+  antlrDebuging()
+  //fetchDebug()
 })
 
 /**
