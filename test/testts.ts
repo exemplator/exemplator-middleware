@@ -103,18 +103,19 @@ const code = `public class RetrofitManager {
 @suite(timeout(3000), slow(1000))
 class Hello {
   @test antlr4tsTest() {
-    const Java8Lexer = require('../src/parser/java8/Java8Lexer').Java
-    const Java8Parser = require('../src/parser/java8/Java8Parser')
-    // const Java8Visitor = require('../src/parser/java8/Java8Visitor')
+    const Java8Lexer = require('../src/parser/java8/Java8Lexer').Java8Lexer
+    const Java8Parser = require('../src/parser/java8/Java8Parser').Java8Parser
+    const Java8Visitor = require('../src/parser/java8/Java8Visitor').Java8Visitor
 
     // Create the lexer and parser
     let inputStream = new ANTLRInputStream(code);
-    //let lexer = new Java8Lexer(inputStream);
-    //let tokenStream = new CommonTokenStream(lexer);
-    //let parser = new Java8Parser(tokenStream);
+    let lexer = new Java8Lexer(inputStream);
+    let tokenStream = new CommonTokenStream(lexer);
+    let parser = new Java8Parser(tokenStream);
 
     // Parse the input, where `compilationUnit` is whatever entry point you defined
-    //let result = parser.compilationUnit();
+    let result = parser.compilationUnit();
+    console.log(result)
   }
 }
 
