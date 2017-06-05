@@ -14,5 +14,6 @@
   },
   "compileOnSave": false,
   "buildOnSave": false,
-  "exclude": ["node_modules", "src/data", "src/constants", "lib", "rollup.config.js", "src/debug.js", "src/main.js", "src/search", "test/setup.js", "test/test.js", "test/resources"]
+  "exclude": ["node_modules", "src/data", "src/constants", "lib",
+    "config", "src/debug.js", "src/main.js", "src/search", "test/setup.js", "test/test.js", "test/resources"]
 }
