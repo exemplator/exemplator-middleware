@@ -28,7 +28,6 @@ const Middleware = {
 
   fetchTest(list, page, language, vcs) {
     const codeSearch = new CodeSearch()
-
     return codeSearch.fetch(list, page, language, vcs)
   },
 
