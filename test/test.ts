@@ -100,7 +100,7 @@ const code = `public class RetrofitManager {
     }
 }`
 
-@suite(timeout(3000), slow(1000))
+@suite(timeout(30000), slow(1000))
 class Hello {
   @test antlr4tsTest() {
     const Java8Lexer = require('../src/parser/java8/Java8Lexer').Java8Lexer

@@ -94,18 +94,8 @@
     "typescript": "^2.3.4"
   },
   "scripts": {
-    "antlr4": "antlr4 -Dlanguage=JavaScript src/parser/java8/Java8.g4 -o src -visitor",
-    "antlr4ts": "antlr4ts -Dlanguage=JavaScript src/parser/java8/Java8.g4 -o src -visitor",
-    "start": "NODE_ENV=production rollup -c",
-    "dev": "rollup -c",
-    "testts": "tsc && mocha --require ./test/setupts.ts",
-    "test": "mocha --compilers js:babel-register --require babel-polyfill --require ./test/setup.js",
-    "cover": "babel-node ./node_modules/.bin/isparta cover _mocha",
-    "precoveralls": "npm run cover",
-    "coveralls": "coveralls < coverage/lcov.info",
-    "generate-docs": "esdoc -c esdoc.json",
-    "deploy-docs": "gh-pages-deploy",
-    "clean-source": "rimraf README.md src webroot package.json",
-    "prepublish": "npm-run-all start test"
+    "antlr4ts": "antlr4ts src/parser/java8/Java8.g4 -visitor",
+    "pretest": "tsc",
+    "test": "mocha --require ./test/setup.ts"
   }
 }
