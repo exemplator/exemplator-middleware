@@ -76,7 +76,7 @@
     "rollup-plugin-replace": "^1.1.1"
   },
   "scripts": {
-    "antlr": "antlr4 -Dlanguage=JavaScript src/antlr/java8/Java8.g4 -o src/antlr/java8.g4 -visitor",
+    "antlr": "antlr4 -Dlanguage=JavaScript src/antlr/java8/Java8.g4 -visitor",
     "start": "NODE_ENV=production rollup -c",
     "dev": "rollup -c",
     "test": "mocha --compilers js:babel-register --require babel-polyfill --require ./test/setup.js",
